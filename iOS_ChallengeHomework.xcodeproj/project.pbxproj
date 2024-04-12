@@ -13,9 +13,11 @@
 		1B7073412BC7C608001D0806 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073402BC7C608001D0806 /* Base */; };
 		1B7073432BC7C60A001D0806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073422BC7C60A001D0806 /* Assets.xcassets */; };
 		1B7073462BC7C60A001D0806 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073452BC7C60A001D0806 /* Base */; };
+		27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0AB328470C1543EAD381FC /* Pods-iOS_ChallengeHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_ChallengeHomework.debug.xcconfig"; path = "Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework.debug.xcconfig"; sourceTree = "<group>"; };
 		1B7073362BC7C608001D0806 /* iOS_ChallengeHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_ChallengeHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7073392BC7C608001D0806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B70733B2BC7C608001D0806 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		1B7073422BC7C60A001D0806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B7073452BC7C60A001D0806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B7073472BC7C60A001D0806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_ChallengeHomework.release.xcconfig"; path = "Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework.release.xcconfig"; sourceTree = "<group>"; };
+		BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_ChallengeHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				1B7073382BC7C608001D0806 /* iOS_ChallengeHomework */,
 				1B7073372BC7C608001D0806 /* Products */,
+				C907DC126F07A3A0D256F007 /* Pods */,
+				523796730BDBAD664C4F42DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = iOS_ChallengeHomework;
 			sourceTree = "<group>";
 		};
+		523796730BDBAD664C4F42DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C907DC126F07A3A0D256F007 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0B0AB328470C1543EAD381FC /* Pods-iOS_ChallengeHomework.debug.xcconfig */,
+				46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B70734A2BC7C60A001D0806 /* Build configuration list for PBXNativeTarget "iOS_ChallengeHomework" */;
 			buildPhases = (
+				5DC49CFF9140E24750D33CF7 /* [CP] Check Pods Manifest.lock */,
 				1B7073322BC7C608001D0806 /* Sources */,
 				1B7073332BC7C608001D0806 /* Frameworks */,
 				1B7073342BC7C608001D0806 /* Resources */,
+				A0203CDDB8D58E2FE443A795 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5DC49CFF9140E24750D33CF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS_ChallengeHomework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0203CDDB8D58E2FE443A795 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B7073322BC7C608001D0806 /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		1B70734B2BC7C60A001D0806 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B0AB328470C1543EAD381FC /* Pods-iOS_ChallengeHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +385,7 @@
 		};
 		1B70734C2BC7C60A001D0806 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
