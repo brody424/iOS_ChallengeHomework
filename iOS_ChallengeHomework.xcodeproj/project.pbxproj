@@ -9,10 +9,19 @@
 /* Begin PBXBuildFile section */
 		1B70733A2BC7C608001D0806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7073392BC7C608001D0806 /* AppDelegate.swift */; };
 		1B70733C2BC7C608001D0806 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B70733B2BC7C608001D0806 /* SceneDelegate.swift */; };
-		1B70733E2BC7C608001D0806 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B70733D2BC7C608001D0806 /* ViewController.swift */; };
 		1B7073412BC7C608001D0806 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073402BC7C608001D0806 /* Base */; };
 		1B7073432BC7C60A001D0806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073422BC7C60A001D0806 /* Assets.xcassets */; };
 		1B7073462BC7C60A001D0806 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1B7073452BC7C60A001D0806 /* Base */; };
+		1B83A43E2BC8B410007EF2FB /* GithubProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B83A43D2BC8B410007EF2FB /* GithubProfileViewController.swift */; };
+		1B8630962BC8B479009BB75F /* GithubProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8630912BC8B479009BB75F /* GithubProfileTableViewCell.swift */; };
+		1B8630972BC8B479009BB75F /* GithubProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8630922BC8B479009BB75F /* GithubProfileTableViewCell.xib */; };
+		1B8630982BC8B479009BB75F /* GithubRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8630932BC8B479009BB75F /* GithubRepositoryTableViewCell.swift */; };
+		1B8630992BC8B479009BB75F /* GithubRepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8630942BC8B479009BB75F /* GithubRepositoryTableViewCell.xib */; };
+		1B86309E2BC8B493009BB75F /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B86309B2BC8B493009BB75F /* GithubRepository.swift */; };
+		1B86309F2BC8B493009BB75F /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B86309C2BC8B493009BB75F /* GithubUser.swift */; };
+		1B8630A12BC8B49A009BB75F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8630A02BC8B49A009BB75F /* NetworkManager.swift */; };
+		1BDE534E2BC8B35B005EB29F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534D2BC8B35B005EB29F /* Alamofire */; };
+		1BDE53502BC8B35B005EB29F /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */; };
 		27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +30,18 @@
 		1B7073362BC7C608001D0806 /* iOS_ChallengeHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_ChallengeHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7073392BC7C608001D0806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B70733B2BC7C608001D0806 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1B70733D2BC7C608001D0806 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1B7073402BC7C608001D0806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B7073422BC7C60A001D0806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B7073452BC7C60A001D0806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B7073472BC7C60A001D0806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B83A43D2BC8B410007EF2FB /* GithubProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfileViewController.swift; sourceTree = "<group>"; };
+		1B8630912BC8B479009BB75F /* GithubProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubProfileTableViewCell.swift; sourceTree = "<group>"; };
+		1B8630922BC8B479009BB75F /* GithubProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GithubProfileTableViewCell.xib; sourceTree = "<group>"; };
+		1B8630932BC8B479009BB75F /* GithubRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		1B8630942BC8B479009BB75F /* GithubRepositoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GithubRepositoryTableViewCell.xib; sourceTree = "<group>"; };
+		1B86309B2BC8B493009BB75F /* GithubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
+		1B86309C2BC8B493009BB75F /* GithubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
+		1B8630A02BC8B49A009BB75F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_ChallengeHomework.release.xcconfig"; path = "Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework.release.xcconfig"; sourceTree = "<group>"; };
 		BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_ChallengeHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +52,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */,
+				1BDE53502BC8B35B005EB29F /* AlamofireDynamic in Frameworks */,
+				1BDE534E2BC8B35B005EB29F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,15 +81,46 @@
 		1B7073382BC7C608001D0806 /* iOS_ChallengeHomework */ = {
 			isa = PBXGroup;
 			children = (
+				1B86309D2BC8B493009BB75F /* Model */,
+				1BDE53512BC8B370005EB29F /* ViewController */,
 				1B7073392BC7C608001D0806 /* AppDelegate.swift */,
 				1B70733B2BC7C608001D0806 /* SceneDelegate.swift */,
-				1B70733D2BC7C608001D0806 /* ViewController.swift */,
-				1B70733F2BC7C608001D0806 /* Main.storyboard */,
 				1B7073422BC7C60A001D0806 /* Assets.xcassets */,
 				1B7073442BC7C60A001D0806 /* LaunchScreen.storyboard */,
 				1B7073472BC7C60A001D0806 /* Info.plist */,
 			);
 			path = iOS_ChallengeHomework;
+			sourceTree = "<group>";
+		};
+		1B8630952BC8B479009BB75F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1B8630912BC8B479009BB75F /* GithubProfileTableViewCell.swift */,
+				1B8630922BC8B479009BB75F /* GithubProfileTableViewCell.xib */,
+				1B8630932BC8B479009BB75F /* GithubRepositoryTableViewCell.swift */,
+				1B8630942BC8B479009BB75F /* GithubRepositoryTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1B86309D2BC8B493009BB75F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B8630A02BC8B49A009BB75F /* NetworkManager.swift */,
+				1B86309B2BC8B493009BB75F /* GithubRepository.swift */,
+				1B86309C2BC8B493009BB75F /* GithubUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BDE53512BC8B370005EB29F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1B8630952BC8B479009BB75F /* Cells */,
+				1B70733F2BC7C608001D0806 /* Main.storyboard */,
+				1B83A43D2BC8B410007EF2FB /* GithubProfileViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		523796730BDBAD664C4F42DD /* Frameworks */ = {
@@ -88,7 +137,6 @@
 				0B0AB328470C1543EAD381FC /* Pods-iOS_ChallengeHomework.debug.xcconfig */,
 				46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,6 +158,10 @@
 			dependencies = (
 			);
 			name = iOS_ChallengeHomework;
+			packageProductDependencies = (
+				1BDE534D2BC8B35B005EB29F /* Alamofire */,
+				1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */,
+			);
 			productName = iOS_ChallengeHomework;
 			productReference = 1B7073362BC7C608001D0806 /* iOS_ChallengeHomework.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +190,9 @@
 				Base,
 			);
 			mainGroup = 1B70732D2BC7C608001D0806;
+			packageReferences = (
+				1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 1B7073372BC7C608001D0806 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,7 +209,9 @@
 			files = (
 				1B7073432BC7C60A001D0806 /* Assets.xcassets in Resources */,
 				1B7073462BC7C60A001D0806 /* Base in Resources */,
+				1B8630972BC8B479009BB75F /* GithubProfileTableViewCell.xib in Resources */,
 				1B7073412BC7C608001D0806 /* Base in Resources */,
+				1B8630992BC8B479009BB75F /* GithubRepositoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B70733E2BC7C608001D0806 /* ViewController.swift in Sources */,
+				1B86309E2BC8B493009BB75F /* GithubRepository.swift in Sources */,
+				1B8630962BC8B479009BB75F /* GithubProfileTableViewCell.swift in Sources */,
+				1B83A43E2BC8B410007EF2FB /* GithubProfileViewController.swift in Sources */,
+				1B8630982BC8B479009BB75F /* GithubRepositoryTableViewCell.swift in Sources */,
+				1B8630A12BC8B49A009BB75F /* NetworkManager.swift in Sources */,
+				1B86309F2BC8B493009BB75F /* GithubUser.swift in Sources */,
 				1B70733A2BC7C608001D0806 /* AppDelegate.swift in Sources */,
 				1B70733C2BC7C608001D0806 /* SceneDelegate.swift in Sources */,
 			);
@@ -272,7 +334,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -287,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -335,7 +397,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -344,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -370,6 +432,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,6 +462,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,6 +498,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1BDE534D2BC8B35B005EB29F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B70732E2BC7C608001D0806 /* Project object */;
 }
