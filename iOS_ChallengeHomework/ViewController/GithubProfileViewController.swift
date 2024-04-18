@@ -57,7 +57,7 @@ class GithubProfileViewController: UIViewController {
     
     func configureTableView() {
         
-        tableView.register(UINib(nibName: "GithubProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "GithubProfileTableViewCell")
+        tableView.register(GithubProfileTableViewCell.self, forCellReuseIdentifier: "GithubProfileTableViewCell")
         tableView.register(UINib(nibName: "GithubRepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "GithubRepositoryTableViewCell")
         
         tableView.delegate = self
