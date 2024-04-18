@@ -23,7 +23,8 @@
 
 
 # To Be Continued
+- DispatchGroup 사용해보기.
 - DiffableDataSource 적용해보기.
-- MVVM 패턴 사용해보기
+- MVVM 패턴 사용해보기.
 - RxSwift 적용해보기
 - SwiftUI는 고민중!
