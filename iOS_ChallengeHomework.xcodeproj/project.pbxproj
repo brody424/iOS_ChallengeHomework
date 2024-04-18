@@ -20,6 +20,7 @@
 		1B86309E2BC8B493009BB75F /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B86309B2BC8B493009BB75F /* GithubRepository.swift */; };
 		1B86309F2BC8B493009BB75F /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B86309C2BC8B493009BB75F /* GithubUser.swift */; };
 		1B8630A12BC8B49A009BB75F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8630A02BC8B49A009BB75F /* NetworkManager.swift */; };
+		1BAF3B292BD0B8AE00173C24 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF3B282BD0B8AE00173C24 /* README.md */; };
 		1BDE534E2BC8B35B005EB29F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534D2BC8B35B005EB29F /* Alamofire */; };
 		1BDE53502BC8B35B005EB29F /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */; };
 		27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */; };
@@ -42,6 +43,7 @@
 		1B86309B2BC8B493009BB75F /* GithubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
 		1B86309C2BC8B493009BB75F /* GithubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		1B8630A02BC8B49A009BB75F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1BAF3B282BD0B8AE00173C24 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		46A0F118D1349A8859CDE9C4 /* Pods-iOS_ChallengeHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_ChallengeHomework.release.xcconfig"; path = "Target Support Files/Pods-iOS_ChallengeHomework/Pods-iOS_ChallengeHomework.release.xcconfig"; sourceTree = "<group>"; };
 		BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_ChallengeHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 		1B7073382BC7C608001D0806 /* iOS_ChallengeHomework */ = {
 			isa = PBXGroup;
 			children = (
+				1BAF3B282BD0B8AE00173C24 /* README.md */,
 				1B86309D2BC8B493009BB75F /* Model */,
 				1BDE53512BC8B370005EB29F /* ViewController */,
 				1B7073392BC7C608001D0806 /* AppDelegate.swift */,
@@ -207,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAF3B292BD0B8AE00173C24 /* README.md in Resources */,
 				1B7073432BC7C60A001D0806 /* Assets.xcassets in Resources */,
 				1B7073462BC7C60A001D0806 /* Base in Resources */,
 				1B8630972BC8B479009BB75F /* GithubProfileTableViewCell.xib in Resources */,
