@@ -5,14 +5,46 @@
 //  Created by Brody on 4/12/24.
 //
 
+
+//
+
+/**
+ 심화과정을 살짝 보니까
+- MVC vs MVVM
+- 디자인 패턴
+- RxSwift
+
+ MVVM + RxSwift
+
+ UIKit + RxSwift
+ SwiftUI + Combine
+ 
+ js async await
+ Promise
+ */
 import UIKit
 
 class GithubProfileViewController: UIViewController {
 
+    enum Section {
+        case profile
+        case repositories
+    }
+    
+    enum SectionItem: Hashable {
+        case profile(GithubUser)
+        case repository(GithubRepository)
+        case ad(String)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
+
     let networkManager = NetworkManager()
     let userName = "brody424"
+
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    var dataSource: UITableViewDiffableDataSource<Section, SectionItem>?
     
     var profile: GithubUser?
     var repositories: [GithubRepository] = [] {
@@ -27,9 +59,39 @@ class GithubProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureDiffableDataSource()
         configureSearchBar()
         configureTableView()
         configureData()
+    }
+    
+    func configureDiffableDataSource() {
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, item in
+            switch item {
+
+            case .profile(let profile):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "GithubProfileTableViewCell") as? GithubProfileTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.bind(profile)
+                return cell
+
+            case .repository(let repository):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "GithubRepositoryTableViewCell") as? GithubRepositoryTableViewCell else {
+                    return .init()
+                }
+
+                cell.bind(repository)
+                return cell
+                
+            case .ad(let title):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell") as? AdTableViewCell else { return UITableViewCell() }
+                cell.bind(title)
+                return cell
+            }
+            
+        })
     }
     
     func configureData() {
@@ -42,9 +104,31 @@ class GithubProfileViewController: UIViewController {
         getUserProfile(dispatchGroup)
 	        
         dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.applySnapshot()
+        }
+    }
+    
+    func applySnapshot() {
+        guard let profile else { return }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, SectionItem>()
+        snapshot.appendSections([.profile])
+        snapshot.appendItems([.profile(profile)])
+        
+        snapshot.appendSections([.repositories])
+        
+        var items:[SectionItem] = resultRepositories.map({
+            .repository($0)
+        })
+        
+        if resultRepositories.count > 5 {
+            items.insert(.ad("첫번째 광고에요"), at: 3)
+        }
+        if resultRepositories.count > 10 {
+            items.insert(.ad("두번째 광고에요"), at: 6)
         }
 
+        snapshot.appendItems(items)
+        dataSource?.apply(snapshot)
     }
     
     func getUserRepositories(_ group: DispatchGroup) {
@@ -67,9 +151,6 @@ class GithubProfileViewController: UIViewController {
             switch result {
             case .success(let profile):
                 self?.profile = profile
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -84,9 +165,9 @@ class GithubProfileViewController: UIViewController {
         
         tableView.register(GithubProfileTableViewCell.self, forCellReuseIdentifier: "GithubProfileTableViewCell")
         tableView.register(UINib(nibName: "GithubRepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "GithubRepositoryTableViewCell")
+        tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
         
         tableView.delegate = self
-        tableView.dataSource = self
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFire), for: .valueChanged)
@@ -113,9 +194,7 @@ class GithubProfileViewController: UIViewController {
                     return
                 }
                 self.repositories = self.repositories + repositories
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.applySnapshot()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -123,57 +202,16 @@ class GithubProfileViewController: UIViewController {
     }
 }
 
-extension GithubProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "GithubProfileTableViewCell") as? GithubProfileTableViewCell else {
-                return UITableViewCell()
-            }
-            
-            if let profile {
-                cell.bind(profile)
-            }
-            
-            return cell
-            
-        } else if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "GithubRepositoryTableViewCell") as? GithubRepositoryTableViewCell else {
-                return .init()
-            }
-            
-            let repository = resultRepositories[indexPath.row]
-            cell.bind(repository)
-            return cell
-        }
-        
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return resultRepositories.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 120
-        } else {
-            return 70
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row == repositories.count - 1 {
-            if searchBar.text?.isEmpty == true {
-                loadMore()
-            }
+extension GithubProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        switch item {
+        case .profile(let githubUser):
+            print(githubUser)
+        case .repository(let githubRepository):
+            print(githubRepository)
+        case .ad(let title):
+            print("광고문구에요! \(title)")
         }
     }
 }
@@ -185,6 +223,6 @@ extension GithubProfileViewController: UISearchBarDelegate {
         } else {
             resultRepositories = repositories.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         }
-        tableView.reloadData()
+        self.applySnapshot()
     }
 }

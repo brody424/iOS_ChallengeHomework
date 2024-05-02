@@ -49,10 +49,10 @@ class GithubProfileTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         
         profileImageView.snp.makeConstraints { make in
-            make.width.equalTo(profileImageView.snp.height)
+            make.width.height.equalTo(120)
             make.leading.equalToSuperview().inset(10)
             make.top.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(10).priority(999)
         }
         
         idLabel.snp.makeConstraints { make in

@@ -44,6 +44,7 @@ final class NetworkManager {
         }
         
         task.resume()
+        
     }
     
     func fetchUserRepositories(userName: String, page: Int, completion: @escaping (Result<[GithubRepository], Error>) -> Void) {
