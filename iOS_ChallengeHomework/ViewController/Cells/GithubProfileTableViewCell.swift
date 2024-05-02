@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class GithubProfileTableViewCell: UITableViewCell {
         
@@ -47,24 +48,24 @@ class GithubProfileTableViewCell: UITableViewCell {
         addSubview(idLabel)
         addSubview(nameLabel)
         
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        idLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.snp.makeConstraints { make in
+            make.width.equalTo(profileImageView.snp.height)
+            make.leading.equalToSuperview().inset(10)
+            make.top.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(10)
+        }
         
-        NSLayoutConstraint.activate([
-            profileImageView.widthAnchor.constraint(equalTo: profileImageView.heightAnchor, multiplier: 1.0),
-            profileImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            profileImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+        idLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(50)
+            make.trailing.equalToSuperview().inset(10)
+            make.leading.equalTo(profileImageView.snp.trailing).inset(-10)
+        }
 
-            idLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            idLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-            idLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0),
-            
-            nameLabel.topAnchor.constraint(equalTo: idLabel.topAnchor, constant: -20),
-            nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-            nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0),
-        ])
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(idLabel.snp.top).inset(-20)
+            make.trailing.equalToSuperview().inset(10)
+            make.leading.equalTo(profileImageView.snp.trailing).inset(-10)
+        }
         
     }
     

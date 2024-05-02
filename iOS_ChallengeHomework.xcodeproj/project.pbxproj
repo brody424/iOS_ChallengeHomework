@@ -20,8 +20,10 @@
 		1B8630A12BC8B49A009BB75F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8630A02BC8B49A009BB75F /* NetworkManager.swift */; };
 		1BAF3B292BD0B8AE00173C24 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF3B282BD0B8AE00173C24 /* README.md */; };
 		1BAF3B2B2BD0BA4200173C24 /* GithubProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF3B2A2BD0BA4200173C24 /* GithubProfileTableViewCell.swift */; };
-		1BDE534E2BC8B35B005EB29F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534D2BC8B35B005EB29F /* Alamofire */; };
-		1BDE53502BC8B35B005EB29F /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */; };
+		1BB6F4972BE344A700E6EA22 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB6F4962BE344A700E6EA22 /* SnapKit */; };
+		1BB6F4992BE344A700E6EA22 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB6F4982BE344A700E6EA22 /* SnapKit-Dynamic */; };
+		1BB6F49B2BE344D200E6EA22 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB6F49A2BE344D200E6EA22 /* Alamofire */; };
+		1BB6F49D2BE344D200E6EA22 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB6F49C2BE344D200E6EA22 /* AlamofireDynamic */; };
 		27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15530625F3BAC39B7C3ABE /* Pods_iOS_ChallengeHomework.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +54,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DA757F4E7D5B3C2F38F460 /* Pods_iOS_ChallengeHomework.framework in Frameworks */,
-				1BDE53502BC8B35B005EB29F /* AlamofireDynamic in Frameworks */,
-				1BDE534E2BC8B35B005EB29F /* Alamofire in Frameworks */,
+				1BB6F49B2BE344D200E6EA22 /* Alamofire in Frameworks */,
+				1BB6F49D2BE344D200E6EA22 /* AlamofireDynamic in Frameworks */,
+				1BB6F4972BE344A700E6EA22 /* SnapKit in Frameworks */,
+				1BB6F4992BE344A700E6EA22 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +163,10 @@
 			);
 			name = iOS_ChallengeHomework;
 			packageProductDependencies = (
-				1BDE534D2BC8B35B005EB29F /* Alamofire */,
-				1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */,
+				1BB6F4962BE344A700E6EA22 /* SnapKit */,
+				1BB6F4982BE344A700E6EA22 /* SnapKit-Dynamic */,
+				1BB6F49A2BE344D200E6EA22 /* Alamofire */,
+				1BB6F49C2BE344D200E6EA22 /* AlamofireDynamic */,
 			);
 			productName = iOS_ChallengeHomework;
 			productReference = 1B7073362BC7C608001D0806 /* iOS_ChallengeHomework.app */;
@@ -192,6 +198,7 @@
 			mainGroup = 1B70732D2BC7C608001D0806;
 			packageReferences = (
 				1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1BB6F4912BE335DB00E6EA22 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 1B7073372BC7C608001D0806 /* Products */;
 			projectDirPath = "";
@@ -500,6 +507,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1BB6F4912BE335DB00E6EA22 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -511,12 +526,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1BDE534D2BC8B35B005EB29F /* Alamofire */ = {
+		1BB6F4962BE344A700E6EA22 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BB6F4912BE335DB00E6EA22 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		1BB6F4982BE344A700E6EA22 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BB6F4912BE335DB00E6EA22 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		1BB6F49A2BE344D200E6EA22 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		1BDE534F2BC8B35B005EB29F /* AlamofireDynamic */ = {
+		1BB6F49C2BE344D200E6EA22 /* AlamofireDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1BDE534C2BC8B35B005EB29F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;

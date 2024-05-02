@@ -12,15 +12,22 @@ class GithubProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let networkManager = NetworkManager()
     let userName = "brody424"
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var profile: GithubUser?
-    var repositories: [GithubRepository] = []
+    var repositories: [GithubRepository] = [] {
+        didSet {
+            resultRepositories = repositories
+        }
+    }
+    var resultRepositories: [GithubRepository] = []
     var page = 1
     var isLoadingLast = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureSearchBar()
         configureTableView()
         configureData()
     }
@@ -29,7 +36,34 @@ class GithubProfileViewController: UIViewController {
         page = 1
         isLoadingLast = false
         
+        let dispatchGroup = DispatchGroup()
+
+        getUserRepositories(dispatchGroup)
+        getUserProfile(dispatchGroup)
+	        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+
+    }
+    
+    func getUserRepositories(_ group: DispatchGroup) {
+        group.enter()
+        networkManager.fetchUserRepositories(userName: userName, page: page) { [weak self] result in
+            group.leave()
+            switch result {
+            case .success(let repositories):
+                self?.repositories = repositories
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getUserProfile(_ group: DispatchGroup) {
+        group.enter()
         networkManager.fetchUserProfile(userName: userName) { [weak self] result in
+            group.leave()
             switch result {
             case .success(let profile):
                 self?.profile = profile
@@ -40,19 +74,10 @@ class GithubProfileViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        networkManager.fetchUserRepositories(userName: "al45tair", page: page) { [weak self] result in
-            switch result {
-            case .success(let repositories):
-                self?.repositories = repositories
-                DispatchQueue.main.async {
-                    self?.tableView.refreshControl?.endRefreshing()
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+    }
+    
+    func configureSearchBar() {
+        searchBar.delegate = self
     }
     
     func configureTableView() {
@@ -120,7 +145,7 @@ extension GithubProfileViewController: UITableViewDelegate, UITableViewDataSourc
                 return .init()
             }
             
-            let repository = repositories[indexPath.row]
+            let repository = resultRepositories[indexPath.row]
             cell.bind(repository)
             return cell
         }
@@ -132,7 +157,7 @@ extension GithubProfileViewController: UITableViewDelegate, UITableViewDataSourc
         if section == 0 {
             return 1
         } else {
-            return repositories.count
+            return resultRepositories.count
         }
     }
     
@@ -146,7 +171,20 @@ extension GithubProfileViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == repositories.count - 1 {
-            loadMore()
+            if searchBar.text?.isEmpty == true {
+                loadMore()
+            }
         }
+    }
+}
+
+extension GithubProfileViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty == true {
+            resultRepositories = repositories
+        } else {
+            resultRepositories = repositories.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+        tableView.reloadData()
     }
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,26 +18,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Sy-zZ-7VS">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="115" width="393" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ePt-f2-HLF">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wn8-pN-va8"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ePt-f2-HLF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2qa-nn-WBg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Sy-zZ-7VS" secondAttribute="bottom" id="3On-zy-2FP"/>
-                            <constraint firstItem="4Sy-zZ-7VS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Dpb-1b-Ghd"/>
+                            <constraint firstItem="4Sy-zZ-7VS" firstAttribute="top" secondItem="ePt-f2-HLF" secondAttribute="bottom" id="Aab-ir-CE8"/>
                             <constraint firstItem="4Sy-zZ-7VS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P3c-Gb-Fzp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Sy-zZ-7VS" secondAttribute="trailing" id="fpt-fa-bqi"/>
+                            <constraint firstItem="ePt-f2-HLF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ijB-44-55G"/>
+                            <constraint firstItem="ePt-f2-HLF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zGO-Vz-j2M"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="ePt-f2-HLF" id="ptP-gF-IAP"/>
                         <outlet property="tableView" destination="4Sy-zZ-7VS" id="Poy-cd-bDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56" y="25"/>
+            <point key="canvasLocation" x="55.725190839694655" y="24.647887323943664"/>
         </scene>
     </scenes>
     <resources>
