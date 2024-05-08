@@ -21,9 +21,13 @@
 - searchBar 구현하여 레포지토리 검색하기.
 - DispatchGroup 적용하기
 
-# 라이브코딩 - 3 (To Be Continued)
+# 라이브코딩 - 3 (Completed)
 - DiffableDataSource 적용해보기.
 
+# 라이브코딩 - 4 (To Be Continued)
+- RxSwift 적용해보기.
+    - searchBar RxSwift 적용하기.
+    - cell 클릭을 delegate가 아닌 Rx로 변경하기.
 
 # To Be Continued
 - MVVM 패턴 사용해보기.
