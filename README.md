@@ -24,12 +24,13 @@
 # 라이브코딩 - 3 (Completed)
 - DiffableDataSource 적용해보기.
 
-# 라이브코딩 - 4 (To Be Continued)
+# 라이브코딩 - 4 (오늘 진행)
 - RxSwift 적용해보기.
     - searchBar RxSwift 적용하기.
     - cell 클릭을 delegate가 아닌 Rx로 변경하기.
-
+    - cell 내부에 button 추가해서 RxSwift 적용하기.(With Issue)
+- 데이터 불러오는거 Subject 로 변경해서 CombineLatest 사용해보기.
+    
 # To Be Continued
-- MVVM 패턴 사용해보기.
-- RxSwift 적용해보기
+- MVC -> MVVM +RxSwift 리팩토링
 - SwiftUI는 고민중!
