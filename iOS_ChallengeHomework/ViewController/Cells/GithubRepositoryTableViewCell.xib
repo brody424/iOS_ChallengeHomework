@@ -29,19 +29,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ng0-Tm-07e">
+                        <rect key="frame" x="0.0" y="0.0" width="417" height="161"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="dFg-UU-6Uz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1CU-QT-33E"/>
                     <constraint firstItem="dFg-UU-6Uz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4h4-pH-maR"/>
+                    <constraint firstItem="ng0-Tm-07e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="E5m-ck-3xR"/>
                     <constraint firstAttribute="bottom" secondItem="dFg-UU-6Uz" secondAttribute="bottom" constant="8" id="OlZ-Bc-pbc"/>
+                    <constraint firstAttribute="trailing" secondItem="ng0-Tm-07e" secondAttribute="trailing" id="Pmw-8e-xRm"/>
                     <constraint firstItem="tPI-C1-etB" firstAttribute="leading" secondItem="dFg-UU-6Uz" secondAttribute="trailing" constant="8" id="QLb-uE-Cli"/>
+                    <constraint firstAttribute="bottom" secondItem="ng0-Tm-07e" secondAttribute="bottom" id="Y4m-g4-a56"/>
                     <constraint firstItem="tPI-C1-etB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="YzW-wP-HVl"/>
                     <constraint firstAttribute="bottomMargin" secondItem="tPI-C1-etB" secondAttribute="bottom" constant="8" id="foX-Nd-IT2"/>
+                    <constraint firstItem="ng0-Tm-07e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fzP-q6-cc8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tPI-C1-etB" secondAttribute="trailing" constant="8" id="kxc-av-PZA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="button" destination="ng0-Tm-07e" id="WHj-eU-Sze"/>
                 <outlet property="languageLabel" destination="tPI-C1-etB" id="ysE-Zc-Ffo"/>
                 <outlet property="nameLabel" destination="dFg-UU-6Uz" id="BrD-ZX-6WE"/>
             </connections>

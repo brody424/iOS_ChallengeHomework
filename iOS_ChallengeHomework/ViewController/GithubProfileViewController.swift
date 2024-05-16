@@ -8,21 +8,9 @@
 
 //
 
-/**
- 심화과정을 살짝 보니까
-- MVC vs MVVM
-- 디자인 패턴
-- RxSwift
-
- MVVM + RxSwift
-
- UIKit + RxSwift
- SwiftUI + Combine
- 
- js async await
- Promise
- */
 import UIKit
+import RxSwift
+import RxCocoa
 
 class GithubProfileViewController: UIViewController {
 
@@ -42,20 +30,30 @@ class GithubProfileViewController: UIViewController {
     let networkManager = NetworkManager()
     let userName = "brody424"
 
+    var disposeBag = DisposeBag()
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var dataSource: UITableViewDiffableDataSource<Section, SectionItem>?
     
-    var profile: GithubUser?
-    var repositories: [GithubRepository] = [] {
-        didSet {
-            resultRepositories = repositories
-        }
-    }
+    var profileSubject = BehaviorRelay<GithubUser?>(value: nil)
+    var repositoriesSubject = BehaviorRelay<[GithubRepository]>(value: [])
+//    var profile: GithubUser?
+//    var repositories: [GithubRepository] = [] {
+//        didSet {
+//            resultRepositories = repositories
+//        }
+//    }
     var resultRepositories: [GithubRepository] = []
     var page = 1
     var isLoadingLast = false
     
+    func rxTest() {
+        let textField = UITextField()
+        textField.rx.text
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +61,17 @@ class GithubProfileViewController: UIViewController {
         configureSearchBar()
         configureTableView()
         configureData()
+        
+
+        Observable.combineLatest(profileSubject, repositoriesSubject)
+//            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+//            .asDriver(onErrorJustReturn: (nil, []))
+//            .drive { [weak self] profile, repositories in
+            .bind{ [weak self] profile, repositories in
+                guard let profile else { return }
+//                self?.tableView.reloadData()
+                self?.applySnapshot(profile: profile, resultRepositories: repositories)
+            }.disposed(by: disposeBag)
     }
     
     func configureDiffableDataSource() {
@@ -104,12 +113,11 @@ class GithubProfileViewController: UIViewController {
         getUserProfile(dispatchGroup)
 	        
         dispatchGroup.notify(queue: .main) {
-            self.applySnapshot()
+            
         }
     }
-    
-    func applySnapshot() {
-        guard let profile else { return }
+
+    func applySnapshot(profile: GithubUser, resultRepositories: [GithubRepository]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, SectionItem>()
         snapshot.appendSections([.profile])
         snapshot.appendItems([.profile(profile)])
@@ -137,7 +145,7 @@ class GithubProfileViewController: UIViewController {
             group.leave()
             switch result {
             case .success(let repositories):
-                self?.repositories = repositories
+                self?.repositoriesSubject.accept(repositories)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -150,7 +158,7 @@ class GithubProfileViewController: UIViewController {
             group.leave()
             switch result {
             case .success(let profile):
-                self?.profile = profile
+                self?.profileSubject.accept(profile)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -158,7 +166,20 @@ class GithubProfileViewController: UIViewController {
     }
     
     func configureSearchBar() {
-        searchBar.delegate = self
+        searchBar.rx.text
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe { [weak self] text in
+                guard let `self` = self else { return }
+                guard let text else { return }
+                guard let profile = self.profileSubject.value else { return }
+                if text.isEmpty == true {
+                    self.resultRepositories = self.repositoriesSubject.value
+                } else {
+                    self.resultRepositories = self.repositoriesSubject.value.filter { $0.name.lowercased().contains(text.lowercased()) }
+                }
+                self.applySnapshot(profile: profile, resultRepositories: self.resultRepositories)
+            }.disposed(by: disposeBag)
     }
     
     func configureTableView() {
@@ -167,11 +188,24 @@ class GithubProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "GithubRepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "GithubRepositoryTableViewCell")
         tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
         
-        tableView.delegate = self
+//        tableView.delegate = self
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFire), for: .valueChanged)
         tableView.refreshControl = refreshControl
+  
+        tableView.rx.itemSelected
+            .subscribe { [weak self] indexPath in
+                guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else { return }
+                switch item {
+                case .profile(let githubUser):
+                    print(githubUser)
+                case .repository(let githubRepository):
+                    print(githubRepository)
+                case .ad(let title):
+                    print("광고문구에요! \(title)")
+                }
+            }.disposed(by: disposeBag)
     }
     
     @objc func refreshFire() {
@@ -193,8 +227,10 @@ class GithubProfileViewController: UIViewController {
                     self.isLoadingLast = true
                     return
                 }
-                self.repositories = self.repositories + repositories
-                self.applySnapshot()
+
+                var originRepository = self.repositoriesSubject.value
+                originRepository.append(contentsOf: repositories)
+                self.repositoriesSubject.accept(originRepository)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -202,27 +238,22 @@ class GithubProfileViewController: UIViewController {
     }
 }
 
-extension GithubProfileViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        switch item {
-        case .profile(let githubUser):
-            print(githubUser)
-        case .repository(let githubRepository):
-            print(githubRepository)
-        case .ad(let title):
-            print("광고문구에요! \(title)")
-        }
-    }
-}
+//extension GithubProfileViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let item = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+//        switch item {
+//        case .profile(let githubUser):
+//            print(githubUser)
+//        case .repository(let githubRepository):
+//            print(githubRepository)
+//        case .ad(let title):
+//            print("광고문구에요! \(title)")
+//        }
+//    }
+//}
 
 extension GithubProfileViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty == true {
-            resultRepositories = repositories
-        } else {
-            resultRepositories = repositories.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        }
-        self.applySnapshot()
+        print(searchText)
     }
 }
